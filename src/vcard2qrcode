@@ -1,0 +1,53 @@
+#!/bin/sh
+program_name=$0
+usage(){
+    echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
+}
+exit_error(){
+    usage
+    exit 1
+}
+file_check(){
+    input_file=$1
+    if [ -f $input_file ]; then
+        if [ -s $input_file ]; then
+            if [ ! -r $input_file ]; then
+                echo "$input_file file is not readable."
+                exit_error
+            fi
+        else
+            echo "$input_file file is empty."
+            exit_error
+        fi
+    else
+        echo "$input_file file is not exists."
+        exit_error
+    fi
+}
+number_of_arguments=$#
+if [ $number_of_arguments -eq 0 ]; then
+    exit_error
+fi
+short_options=i:,o:
+long_options=input:,output:,
+options=$(getopt --options $short_options --longoptions $long_options -- "$@")
+eval set -- ${options}
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -i|--input)
+            shift
+            file_check $1
+            ;;
+        -o|--output)
+            shift
+            echo $1
+            ;;
+        --)
+            break
+            ;;
+        *)
+            exit_error
+            ;;
+    esac
+    shift
+done
