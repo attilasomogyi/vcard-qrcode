@@ -7,7 +7,7 @@ exit_error(){
     usage
     exit 1
 }
-file_check(){
+check_file(){
     input_file=$1
     if [ -f $input_file ]; then
         if [ -s $input_file ]; then
@@ -24,6 +24,14 @@ file_check(){
         exit_error
     fi
 }
+check_vcard(){
+    input_file=$1
+    mime_type=$(file --brief --mime-type $input_file)
+    if [ "$mime_type" != "text/vcard" ]; then
+        echo "$input_file file is not vcard file."
+
+    fi
+}
 number_of_arguments=$#
 if [ $number_of_arguments -eq 0 ]; then
     exit_error
@@ -36,7 +44,8 @@ while [ $# -gt 0 ]; do
     case "$1" in
         -i|--input)
             shift
-            file_check $1
+            check_file $1
+            check_vcard $1
             ;;
         -o|--output)
             shift
