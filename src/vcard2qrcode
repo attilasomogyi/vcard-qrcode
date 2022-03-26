@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 program_name=$0
 usage(){
     echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
