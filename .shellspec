@@ -1,0 +1,3 @@
+--default-path "tests"
+--helperdir "tests"
+--pattern "*-test.sh"
