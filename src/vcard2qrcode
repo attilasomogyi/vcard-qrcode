@@ -1,5 +1,14 @@
 #!/bin/sh
 program_name=$0
+number_of_program_arguments=$#
+program_arguments=$@
+short_options=i:,o:
+long_options=input:,output:
+check_number_of_program_arguments(){
+    if [ $number_of_program_arguments -eq 0 ]; then
+        exit_error
+    fi
+}
 usage(){
     echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
 }
@@ -32,37 +41,42 @@ check_vcard(){
 
     fi
 }
-number_of_arguments=$#
-if [ $number_of_arguments -eq 0 ]; then
-    exit_error
+main(){
+    check_number_of_program_arguments
+    options=$(getopt --options $short_options --longoptions $long_options -- "$@")
+    eval set -- ${options}
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -i|--input)
+                shift
+                input_file=$1
+                check_file $input_file
+                check_vcard $input_file
+                ;;
+            -o|--output)
+                shift
+                output_file=$1
+                output_file_extension=${output_file##*.}
+                output_file=$(dirname "$output_file")/${output_file%.*}
+                ;;
+            --)
+                break
+                ;;
+            *)
+                exit_error
+                ;;
+        esac
+        shift
+    done
+    if [ -z $input_file ]; then
+        exit_error
+    fi
+    if [ -z $output_file ]; then
+        output_file_extension=svg
+        output_file=$(dirname "$input_file")/${input_file%.*}
+    fi
+    qrencode --read-from $input_file --type $output_file_extension --output $output_file.$output_file_extension
+}
+if [ "$program_name" = "$_" ]; then
+    main $program_arguments
 fi
-short_options=i:,o:
-long_options=input:,output:,
-options=$(getopt --options $short_options --longoptions $long_options -- "$@")
-eval set -- ${options}
-while [ $# -gt 0 ]; do
-    case "$1" in
-        -i|--input)
-            shift
-            input_file=$1
-            check_file $input_file
-            check_vcard $input_file
-            output_file_extension=svg
-            output_file=$(dirname "$input_file")/${input_file%.*}
-            ;;
-        -o|--output)
-            shift
-            output_file=$1
-            output_file_extension=${output_file##*.}
-            output_file=$(dirname "$output_file")/${output_file%.*}
-            ;;
-        --)
-            break
-            ;;
-        *)
-            exit_error
-            ;;
-    esac
-    shift
-done
-qrencode --read-from $input_file --type $output_file_extension --output $output_file.$output_file_extension
