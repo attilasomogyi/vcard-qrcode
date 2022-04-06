@@ -1,0 +1,95 @@
+@node Top
+@top VCARD2QRCODE
+
+@menu
+* NAME::
+* SYNOPSIS::
+* DESCRIPTION::
+* OPTIONS::
+* EXIT STATUS::
+* EXAMPLES::
+* AUTHORS::
+* REPORTING BUGS::
+* COPYRIGHT::
+* SEE ALSO::
+@end menu
+
+@node NAME
+@chapter NAME
+@anchor{#name}
+vcard2qrcode - vcard to qrcode converter
+
+@node SYNOPSIS
+@chapter SYNOPSIS
+@anchor{#synopsis}
+@strong{vcard2qrcode} @strong{[ -i | --input ]}
+@emph{vcard-filename.vcf} @strong{[ -o | --output ]}
+@emph{output-filename}
+
+@node DESCRIPTION
+@chapter DESCRIPTION
+@anchor{#description}
+@strong{vcard2qrcode} is a vcard to qrcode command line converter.
+
+@node OPTIONS
+@chapter OPTIONS
+@anchor{#options}
+
+@node EXIT STATUS
+@chapter EXIT STATUS
+@anchor{#exit-status}
+@table @asis
+@item 0
+
+Successful completion.
+
+@item >0
+
+An error occurred.
+
+@end table
+
+@node EXAMPLES
+@chapter EXAMPLES
+@anchor{#examples}
+
+@node AUTHORS
+@chapter AUTHORS
+@anchor{#authors}
+Written by Attila Zsolt Somogyi.
+
+@node REPORTING BUGS
+@chapter REPORTING BUGS
+@anchor{#reporting-bugs}
+@uref{https://github.com/attilasomogyi/vcard2qrcode/issues,}
+
+@node COPYRIGHT
+@chapter COPYRIGHT
+@anchor{#copyright}
+MIT License
+
+Copyright (c) 2022 Attila Zsolt Somogyi
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+@node SEE ALSO
+@chapter SEE ALSO
+@anchor{#see-also}
+@strong{qrencode(1),} @strong{QtQR(1)}

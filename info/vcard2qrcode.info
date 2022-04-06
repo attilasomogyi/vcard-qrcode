@@ -1,0 +1,156 @@
+This is vcard2qrcode.info, produced by makeinfo version 6.7 from
+vcard2qrcode.texi.
+
+
+File: vcard2qrcode.info,  Node: Top,  Next: NAME,  Up: (dir)
+
+VCARD2QRCODE
+************
+
+* Menu:
+
+* NAME::
+* SYNOPSIS::
+* DESCRIPTION::
+* OPTIONS::
+* EXIT STATUS::
+* EXAMPLES::
+* AUTHORS::
+* REPORTING BUGS::
+* COPYRIGHT::
+* SEE ALSO::
+
+
+File: vcard2qrcode.info,  Node: NAME,  Next: SYNOPSIS,  Prev: Top,  Up: Top
+
+1 NAME
+******
+
+vcard2qrcode - vcard to qrcode converter
+
+
+File: vcard2qrcode.info,  Node: SYNOPSIS,  Next: DESCRIPTION,  Prev: NAME,  Up: Top
+
+2 SYNOPSIS
+**********
+
+*vcard2qrcode* *[ -i | -input ]* _vcard-filename.vcf_ *[ -o | -output ]*
+_output-filename_
+
+
+File: vcard2qrcode.info,  Node: DESCRIPTION,  Next: OPTIONS,  Prev: SYNOPSIS,  Up: Top
+
+3 DESCRIPTION
+*************
+
+*vcard2qrcode* is a vcard to qrcode command line converter.
+
+
+File: vcard2qrcode.info,  Node: OPTIONS,  Next: EXIT STATUS,  Prev: DESCRIPTION,  Up: Top
+
+4 OPTIONS
+*********
+
+
+File: vcard2qrcode.info,  Node: EXIT STATUS,  Next: EXAMPLES,  Prev: OPTIONS,  Up: Top
+
+5 EXIT STATUS
+*************
+
+0
+
+     Successful completion.
+
+>0
+
+     An error occurred.
+
+
+File: vcard2qrcode.info,  Node: EXAMPLES,  Next: AUTHORS,  Prev: EXIT STATUS,  Up: Top
+
+6 EXAMPLES
+**********
+
+
+File: vcard2qrcode.info,  Node: AUTHORS,  Next: REPORTING BUGS,  Prev: EXAMPLES,  Up: Top
+
+7 AUTHORS
+*********
+
+Written by Attila Zsolt Somogyi.
+
+
+File: vcard2qrcode.info,  Node: REPORTING BUGS,  Next: COPYRIGHT,  Prev: AUTHORS,  Up: Top
+
+8 REPORTING BUGS
+****************
+
+<https://github.com/attilasomogyi/vcard2qrcode/issues>
+
+
+File: vcard2qrcode.info,  Node: COPYRIGHT,  Next: SEE ALSO,  Prev: REPORTING BUGS,  Up: Top
+
+9 COPYRIGHT
+***********
+
+MIT License
+
+   Copyright (c) 2022 Attila Zsolt Somogyi
+
+   Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+   The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+File: vcard2qrcode.info,  Node: SEE ALSO,  Prev: COPYRIGHT,  Up: Top
+
+10 SEE ALSO
+***********
+
+*qrencode(1),* *QtQR(1)*
+
+
+Tag Table:
+Node: Top85
+Node: NAME323
+Ref: #name417
+Node: SYNOPSIS459
+Ref: #synopsis569
+Node: DESCRIPTION661
+Ref: #description780
+Node: OPTIONS841
+Ref: #options955
+Node: EXIT STATUS955
+Ref: #exit-status1074
+Node: EXAMPLES1134
+Ref: #examples1247
+Node: AUTHORS1247
+Ref: #authors1361
+Node: REPORTING BUGS1395
+Ref: #reporting-bugs1524
+Node: COPYRIGHT1580
+Ref: #copyright1700
+Node: SEE ALSO2790
+Ref: #see-also2887
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
