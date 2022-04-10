@@ -13,7 +13,8 @@ jobs:
       - run: wget -O- https://git.io/shellspec | sh
       - run: npm ci
       - run: npm test
-      - run: shellspec --output junit --profile
+      - run: git clone https://github.com/shellspec/shellspec.git
+      - run: sh shellspec/shellspec --output junit --profile
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
