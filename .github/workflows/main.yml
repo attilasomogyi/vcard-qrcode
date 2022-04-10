@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install ci
+      - run: npm install test
+      - run: git clone https://github.com/shellspec/shellspec.git
+      - run: sh shellspec/shellspec --output junit --profile
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Result
+          path: report/*.xml
+          reporter: java-junit
