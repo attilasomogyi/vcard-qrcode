@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: wget -O- https://git.io/shellspec | sh
       - run: npm ci
       - run: npm test
       - run: git clone https://github.com/shellspec/shellspec.git
