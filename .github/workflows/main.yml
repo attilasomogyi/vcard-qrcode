@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm test
+      - run: npm install ci
+      - run: npm install test
       - run: git clone https://github.com/shellspec/shellspec.git
       - run: sh shellspec/shellspec --output junit --profile
       - run: cat report/*.xml
