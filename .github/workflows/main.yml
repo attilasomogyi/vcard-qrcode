@@ -18,6 +18,6 @@ jobs:
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: Java junit Tests
-          path: report/results_junit.xml
+          name: Test Result
+          path: ${{github.worksapce}}/report/results_junit.xml
           reporter: java-junit
