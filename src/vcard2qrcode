@@ -1,5 +1,5 @@
 #!/bin/sh
-program_name=$0
+program_name=vcard2qrcode
 number_of_program_arguments=$#
 program_arguments=$@
 short_options=i:,o:
