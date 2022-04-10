@@ -20,5 +20,5 @@ jobs:
         if: success() || failure()
         with:
           name: Test Result
-          path: ${{github.worksapce}}/report/results_junit.xml
+          path: report/results_junit.xml
           reporter: java-junit
