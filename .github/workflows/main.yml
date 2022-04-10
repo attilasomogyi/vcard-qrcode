@@ -14,6 +14,7 @@ jobs:
       - run: npm test
       - run: git clone https://github.com/shellspec/shellspec.git
       - run: sh shellspec/shellspec --output junit --profile
+      - run: cat report/*.xml
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
