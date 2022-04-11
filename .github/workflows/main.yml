@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install ci
       - run: npm install test
-      - run: git clone https://github.com/shellspec/shellspec.git
-      - run: sh shellspec/shellspec --output junit --profile
+      - run: curl -fsSL https://git.io/shellspec | sh -s -- --yes
+      - run: shellspec --output junit --profile
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
