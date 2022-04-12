@@ -19,6 +19,10 @@ exit_error(){
 }
 check_file(){
     input_file=$1
+    if [ -z $input_file ]; then
+        echo "Missing file argument on check_file() funciton." 1>&2
+        exit_error
+    fi
     if [ -f $input_file ]; then
         if [ -s $input_file ]; then
             if [ ! -r $input_file ]; then
