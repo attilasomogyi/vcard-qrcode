@@ -1,8 +1,9 @@
 #!/bin/sh
+set -eu
 name_of_the_current_shell_script=$0
 program_name=vcard2qrcode
 number_of_program_arguments=$#
-program_arguments=$@
+program_arguments=$*
 short_options=i:,o:
 long_options=input:,output:
 check_number_of_program_arguments(){
@@ -18,14 +19,18 @@ exit_error(){
     exit 1
 }
 check_file(){
-    input_file=$1
-    if [ -z $input_file ]; then
+    if [ -z ${1+x} ]; then
+        input_file=""
+    else
+        input_file=$1
+    fi
+    if [ -z "$input_file" ]; then
         echo "Missing file argument on check_file() funciton." 1>&2
         exit_error
     fi
-    if [ -f $input_file ]; then
-        if [ -s $input_file ]; then
-            if [ ! -r $input_file ]; then
+    if [ -f "$input_file" ]; then
+        if [ -s "$input_file" ]; then
+            if [ ! -r "$input_file" ]; then
                 echo "$input_file file is not readable." 1>&2
                 exit_error
             fi
@@ -39,23 +44,28 @@ check_file(){
     fi
 }
 check_vcard(){
-    input_file=$1
-    mime_type=$(file --brief --mime-type $input_file)
+    if [ -z ${1+x} ]; then
+        input_file=""
+    else
+        input_file=$1
+    fi
+    check_file "$input_file"
+    mime_type=$(file --brief --mime-type "$input_file")
     if [ "$mime_type" != "text/vcard" ]; then
         echo "$input_file file is not vcard file." 1>&2
     fi
 }
 main(){
     check_number_of_program_arguments
-    options=$(getopt --options $short_options --longoptions $long_options -- "$@")
-    eval set -- ${options}
+    options=$(getopt --options $short_options --longoptions $long_options --unquoted -- "$@")
+    output_file=""
+    eval set -- "${options}"
     while [ $# -gt 0 ]; do
         case "$1" in
             -i|--input)
                 shift
                 input_file=$1
-                check_file $input_file
-                check_vcard $input_file
+                check_vcard "$input_file"
                 ;;
             -o|--output)
                 shift
@@ -72,15 +82,15 @@ main(){
         esac
         shift
     done
-    if [ -z $input_file ]; then
+    if [ -z "$input_file" ]; then
         exit_error
     fi
-    if [ -z $output_file ]; then
+    if [ -z "$output_file" ]; then
         output_file_extension=svg
         output_file=$(dirname "$input_file")/${input_file%.*}
     fi
-    qrencode --read-from $input_file --type $output_file_extension --output $output_file.$output_file_extension
+    qrencode --read-from "$input_file" --type "$output_file_extension" --output "$output_file.$output_file_extension"
 }
-if [ "$name_of_the_current_shell_script" = "$_" ]; then
-    main $program_arguments
+if [ "$name_of_the_current_shell_script" != "/bin/sh" ]; then
+    main "$program_arguments"
 fi
