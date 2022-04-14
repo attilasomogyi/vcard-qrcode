@@ -4,8 +4,8 @@ name_of_the_current_shell_script=$0
 program_name=vcard2qrcode
 number_of_program_arguments=$#
 program_arguments=$*
-short_options=i:,o:
-long_options=input:,output:
+short_options=i:,o:,h
+long_options=input:,output:,help
 check_number_of_program_arguments(){
     if [ $number_of_program_arguments -eq 0 ]; then
         exit_error
@@ -72,6 +72,10 @@ main(){
                 output_file=$1
                 output_file_extension=${output_file##*.}
                 output_file=$(dirname "$output_file")/${output_file%.*}
+                ;;
+            -h|--help)
+                usage
+                exit 0
                 ;;
             --)
                 break
