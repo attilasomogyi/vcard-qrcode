@@ -2,8 +2,7 @@
 Describe 'check_file test'
     Include ./src/vcard2qrcode
     setup() { touch empty-file; touch not-readable-file; chmod ugo-rwx not-readable-file; }
-    cleanup() { rm empty-file;  #rm not-readable-file; 
-    }
+    cleanup() { rm empty-file; rm not-readable-file; }
     BeforeAll 'setup'
     AfterAll 'cleanup'
     It 'check_file() missing file test'
