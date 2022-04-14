@@ -29,14 +29,14 @@ check_file(){
         exit_error
     fi
     if [ -f "$input_file" ]; then
-        if [ -s "$input_file" ]; then
-            if [ ! -r "$input_file" ]; then
-                echo "$input_file file is not readable." 1>&2
+        if [ ! -r "$input_file" ]; then
+            echo "$input_file file is not readable." 1>&2
+            exit_error
+        else
+            if [ ! -s "$input_file" ]; then
+                echo "$input_file file is empty." 1>&2
                 exit_error
             fi
-        else
-            echo "$input_file file is empty." 1>&2
-            exit_error
         fi
     else
         echo "$input_file file is not exists." 1>&2
