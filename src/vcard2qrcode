@@ -20,7 +20,12 @@ check_number_of_program_arguments(){
     fi
 }
 usage(){
-    echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
+    if [ -z ${program_name+x} ]; then
+        echo "program_name is not set." 1>&2
+        exit 1
+    else
+        echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
+    fi
 }
 exit_error(){
     usage
