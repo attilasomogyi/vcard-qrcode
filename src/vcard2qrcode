@@ -7,7 +7,15 @@ program_arguments=$*
 short_options=i:,o:,h
 long_options=input:,output:,help
 check_number_of_program_arguments(){
-    if [ $number_of_program_arguments -eq 0 ]; then
+    if [ -z ${number_of_program_arguments+x} ]; then
+        echo "number_of_program_arguments is not set." 1>&2
+        exit_error
+    elif [ "$number_of_program_arguments" -eq "$number_of_program_arguments" ] 2>/dev/null; then
+        if [ $number_of_program_arguments -eq 0 ]; then
+            exit_error
+        fi
+    else
+        echo "number_of_program_arguments is not number." 1>&2
         exit_error
     fi
 }
