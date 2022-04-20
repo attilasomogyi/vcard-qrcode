@@ -2,7 +2,7 @@
 Describe 'check_vcard test'
     Include ./tests/unit/include/usage-message.sh
     Include ./src/vcard2qrcode
-    setup() { touch empty-file; touch not-readable-file; chmod ugo-rwx not-readable-file; }
+    setup() { touch empty-file; touch not-readable-file; chmod ugo-rwx not-readable-file; echo "invalid-vcard" > invalid-vcard.vcf; }
     cleanup() { rm empty-file; rm not-readable-file; }
     BeforeAll 'setup'
     AfterAll 'cleanup'
@@ -33,5 +33,18 @@ Describe 'check_vcard test'
             The stdout should equal ""
             The line 1 of stderr should equal "not-readable-file file is not readable."
             The line 2 of stderr should equal "$USAGE_MESSAGE"
+    End
+    It 'check_vcard() invalid vcard test'
+        When run check_vcard invalid-vcard.vcf
+            The status should be failure
+            The stdout should equal ""
+            The line 1 of stderr should equal "invalid-vcard.vcf file is not vcard file."
+            The line 2 of stderr should equal "$USAGE_MESSAGE"
+    End
+    It 'check_vcard() valid vcard test'
+        When run check_vcard "tests/example-vcard/example-vcard.vcf"
+            The status should be success
+            The stdout should equal ""
+            The stderr should equal ""
     End
 End
