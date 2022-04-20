@@ -4,7 +4,7 @@ Describe 'usage test'
     Include ./src/vcard2qrcode
     It 'usage() test'
     When run usage ''
-        The stderr should eq "$USAGE_MESSAGE"
+        The stdout should eq "$USAGE_MESSAGE"
     End
     unset_variable() { unset program_name; }
     Before 'unset_variable'
