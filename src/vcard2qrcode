@@ -33,13 +33,10 @@ exit_error(){
 }
 check_file(){
     if [ -z ${1+x} ]; then
-        input_file=""
+        echo "Missing file argument on check_file() function." 1>&2
+        exit_error
     else
         input_file=$1
-    fi
-    if [ -z "$input_file" ]; then
-        echo "Missing file argument on check_file() funciton." 1>&2
-        exit_error
     fi
     if [ -f "$input_file" ]; then
         if [ ! -r "$input_file" ]; then
