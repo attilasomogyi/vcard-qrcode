@@ -24,7 +24,7 @@ Describe 'check_file test'
         When run check_file
             The status should be failure
             The stdout should equal ""
-            The line 1 of stderr should equal "Missing file argument on check_file() funciton."
+            The line 1 of stderr should equal "Missing file argument on check_file() function."
             The line 2 of stderr should equal "$USAGE_MESSAGE"
     End
     It 'check_file() not readable file test'
