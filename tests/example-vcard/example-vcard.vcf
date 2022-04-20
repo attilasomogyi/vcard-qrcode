@@ -1,0 +1,22 @@
+BEGIN:VCARD
+VERSION:4.0
+REV:20220420T000000Z
+N:First;Middle;Last
+FN:First Midle Last
+LANG;TYPE=work;PREF=1:en
+LANG;TYPE=work;PREF=2:hu
+LANG;TYPE=home:hu
+NICKNAME:Firs
+GENDER:M
+TITLE:Volunteer
+Role:Volunteer
+ORG:Volunteers of the Earth
+CATEGORIES:Volunteers
+KIND:individual
+TZ:Europe/Budapest
+TEL;VALUE=uri;TYPE=text;TYPE=voice;TYPE=work;TYPE=home:tel:+3600000000
+EMAIL;TYPE=work;TYPE=test@test.com
+URL:https://github.com/
+ADR;TYPE=HOME:;;;Budapest;Pest;1000;Hungary
+NOTE:I am available: 8 a.m. to 5 p.m.
+END:VCARD
