@@ -24,11 +24,11 @@ usage(){
         echo "program_name is not set." 1>&2
         exit 1
     else
-        echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]" 1>&2
+        echo "Usage: $program_name [ -i | --input FILENAME ] [ -o | --output FILENAME ]"
     fi
 }
 exit_error(){
-    usage
+    usage 1>&2
     exit 1
 }
 check_file(){
