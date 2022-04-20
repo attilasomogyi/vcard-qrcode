@@ -55,7 +55,8 @@ check_file(){
 }
 check_vcard(){
     if [ -z ${1+x} ]; then
-        input_file=""
+        echo "Missing file argument on check_vcard() function." 1>&2
+        exit_error
     else
         input_file=$1
     fi
@@ -63,6 +64,7 @@ check_vcard(){
     mime_type=$(file --brief --mime-type "$input_file")
     if [ "$mime_type" != "text/vcard" ]; then
         echo "$input_file file is not vcard file." 1>&2
+        exit_error
     fi
 }
 main(){
