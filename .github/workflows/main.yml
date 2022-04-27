@@ -6,25 +6,25 @@ on:
     branches: [ main ]
   workflow_dispatch:
 jobs:
-  build:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-    - run: npm install ci
-    - run: npm install test
-    - run: curl -fsSL https://git.io/shellspec | sh -s -- --yes
-    - run: shellspec --output junit --profile
-    - name: Run ShellCheck
-      uses: ludeeus/action-shellcheck@master
-      with:
+   build:
+     runs-on: ubuntu-latest
+     steps:
+     - uses: actions/checkout@v2
+     - run: npm install ci
+     - run: npm install test
+     - run: curl -fsSL https://git.io/shellspec | sh -s -- --yes
+     - run: shellspec --output junit --profile
+     - name: Run ShellCheck
+       uses: ludeeus/action-shellcheck@master
+       with:
         scandir: ./src
         ignore_names: -test.sh
         ignore_paths: tests
         format: diff
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()
-      with:
+     - name: Test Report
+       uses: dorny/test-reporter@v1
+       if: success() || failure()
+       with:
         name: Test Result
         path: report/*.xml
         reporter: java-junit
